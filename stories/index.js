@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@kadira/storybook';// eslint-disable-line
-// import Table from '../build/sorTable';
-import Table from '../src/components/Table';
+import Table from '../build/sorTable';
+// import Table from '../src/components/Table';
 
 
 const headers = [
@@ -24,6 +24,10 @@ const headers = [
 ];
 
 
+const Actions = props => (
+  <button onClick={() => console.log({ id: props.id })} >Print {props.id}</button>
+);
+
 const tableContent = [
   { id: 1, name: 'Alex', surname: 'Cejudo', nickname: 'Grana', age: 21, Actions: <Actions id={1} /> },
   { id: 2, name: 'Alberto', surname: 'Villar', nickname: 'Vilva', age: 1, Actions: <Actions id={2} /> },
@@ -31,9 +35,6 @@ const tableContent = [
   { id: 4, name: 'Alfonso', surname: 'Huescar', nickname: 'Sito', age: 210, Actions: <Actions id={4} /> },
 ];
 
-const Actions = props => (
-  <button onClick={() => console.log({ id: props.id })} >Print {props.id}</button>
-);
 
 storiesOf('Table', module)
   .add('with headers and tableContent arrays', () => (

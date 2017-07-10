@@ -5553,31 +5553,99 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var Table = function (_Component) {
   _inherits(Table, _Component);
 
-  function Table() {
+  function Table(props) {
     _classCallCheck(this, Table);
 
-    return _possibleConstructorReturn(this, (Table.__proto__ || Object.getPrototypeOf(Table)).apply(this, arguments));
+    var _this = _possibleConstructorReturn(this, (Table.__proto__ || Object.getPrototypeOf(Table)).call(this, props));
+
+    _this.state = {
+      content: _this.props.tableContent,
+      reversed: true,
+      target: ''
+    };
+    return _this;
   }
 
   _createClass(Table, [{
-    key: 'render',
-    value: function render() {
-      var _props$tableContent$ = this.props.tableContent[0],
-          id = _props$tableContent$.id,
-          rest = _objectWithoutProperties(_props$tableContent$, ['id']);
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      this.handleSort(this.props.headers[0].target);
+    }
+  }, {
+    key: 'getArraySorted',
+    value: function getArraySorted(target) {
+      if (typeof this.state.content[0][target] === 'string') {
+        if (this.state.reversed) {
+          return this.state.content.sort(function (a, b) {
+            var first = a[target] ? a[target].toLowerCase() : '';
+            var next = b[target] ? b[target].toLowerCase() : '';
+            return first > next ? 1 : -1;
+          });
+        }
+
+        return this.state.content.sort(function (a, b) {
+          var first = a[target] ? a[target].toLowerCase() : '';
+          var next = b[target] ? b[target].toLowerCase() : '';
+          return first < next ? 1 : -1;
+        });
+      }
+      return this.state.reversed ? this.state.content.sort(function (a, b) {
+        return a[target] > b[target] ? 1 : -1;
+      }) : this.state.content.sort(function (a, b) {
+        return a[target] < b[target] ? 1 : -1;
+      });
+    }
+  }, {
+    key: 'handleSort',
+    value: function handleSort(target) {
+      var _this2 = this;
+
+      this.setState({ reversed: !this.state.reversed, target: target }, function () {
+        var sortedArray = _this2.getArraySorted(target);
+        _this2.setState({ content: sortedArray });
+      });
+    }
+  }, {
+    key: 'renderContent',
+    value: function renderContent() {
+      var _state$content$ = this.state.content[0],
+          id = _state$content$.id,
+          Actions = _state$content$.Actions,
+          rest = _objectWithoutProperties(_state$content$, ['id', 'Actions']);
 
       var fields = Object.keys(rest);
-      var rowIterator = this.props.tableContent.map(function (row) {
-        return _react2.default.createElement(_Row2.default, { key: row.id, content: row, fields: fields });
+      return this.state.content.map(function (row) {
+        return _react2.default.createElement(
+          _Row2.default,
+          {
+            key: row.id,
+            content: row,
+            fields: fields
+          },
+          row.Actions
+        );
       });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this3 = this;
+
       return _react2.default.createElement(
         'table',
         { className: 'table-sortable ' + this.props.className },
-        _react2.default.createElement(_Header2.default, { headers: this.props.headers }),
+        _react2.default.createElement(_Header2.default, {
+          target: this.state.target,
+          reversed: this.state.reversed,
+          headers: this.props.headers,
+          handleSort: function handleSort(target) {
+            return _this3.handleSort(target);
+          }
+        }),
         _react2.default.createElement(
           'tbody',
           null,
-          rowIterator
+          this.renderContent()
         )
       );
     }
@@ -5607,7 +5675,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _templateObject = _taggedTemplateLiteral(['\n  &&.sortable-header {\n  }\n'], ['\n  &&.sortable-header {\n  }\n']);
+var _templateObject = _taggedTemplateLiteral(['\n  &&.sortable-header {\n    cursor: pointer;\n    .active-header {\n      color: #22BAD9;\n      i{\n        border: solid #22BAD9;\n        border-width: 0 2px 2px 0;\n        display: inline-block;\n        padding: 5px;\n        &.arrow-down{\n          transform: rotate(45deg) translate(8px);\n          -webkit-transform: rotate(45deg) translate(8px, -8px);\n        }\n        &.arrow-up{\n           transform: rotate(-135deg) translate(-8px);\n          -webkit-transform: rotate(-135deg) translate(-12px, 4px);\n        }\n      }\n  }\n  }\n'], ['\n  &&.sortable-header {\n    cursor: pointer;\n    .active-header {\n      color: #22BAD9;\n      i{\n        border: solid #22BAD9;\n        border-width: 0 2px 2px 0;\n        display: inline-block;\n        padding: 5px;\n        &.arrow-down{\n          transform: rotate(45deg) translate(8px);\n          -webkit-transform: rotate(45deg) translate(8px, -8px);\n        }\n        &.arrow-up{\n           transform: rotate(-135deg) translate(-8px);\n          -webkit-transform: rotate(-135deg) translate(-12px, 4px);\n        }\n      }\n  }\n  }\n']);
 
 var _react = __webpack_require__(9);
 
@@ -5629,8 +5697,18 @@ var Header = function Header(props) {
   var headers = props.headers.map(function (header) {
     return _react2.default.createElement(
       'th',
-      { key: header.message },
-      header.message
+      {
+        className: props.target === header.target ? 'active-header' : '',
+
+        onClick: function onClick() {
+          return header.target && props.handleSort(header.target);
+        },
+        key: header.message
+      },
+      header.message,
+      _react2.default.createElement('i', {
+        className: props.reversed ? 'arrow-down' : 'arrow-up'
+      })
     );
   });
   return _react2.default.createElement(
@@ -5697,7 +5775,12 @@ var Row = function Row(props) {
   return _react2.default.createElement(
     'tr',
     null,
-    renderCells
+    renderCells,
+    _react2.default.createElement(
+      'td',
+      null,
+      props.children
+    )
   );
 };
 
