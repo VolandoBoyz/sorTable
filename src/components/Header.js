@@ -7,7 +7,7 @@ const Header = (props) => {
     <th
       className={props.target === header.target ? 'active-header' : ''}
 
-      onClick={() => props.handleSort(header.target)}
+      onClick={() => header.target && props.handleSort(header.target)}
       key={header.message}
     >
       {header.message}

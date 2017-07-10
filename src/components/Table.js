@@ -13,6 +13,9 @@ class Table extends Component {
       target: '',
     };
   }
+  componentDidMount() {
+    this.handleSort(this.props.headers[0].target);
+  }
   getArraySorted(target) {
     if (typeof (this.state.content[0][target]) === 'string') {
       if (this.state.reversed) {
@@ -42,9 +45,16 @@ class Table extends Component {
   }
 
   renderContent() {
-    const { id, ...rest } = this.state.content[0];
+    const { id, Actions, ...rest } = this.state.content[0];
     const fields = Object.keys(rest);
-    return this.state.content.map(row => <Row key={row.id} content={row} fields={fields} />);
+    return this.state.content.map(row => (
+      <Row
+        key={row.id}
+        content={row}
+        fields={fields}
+      >
+        {row.Actions}
+      </Row>));
   }
   render() {
     return (

@@ -17,19 +17,27 @@ const headers = [
   }, {
     message: 'age',
     target: 'age',
+  }, {
+    message: '',
+    target: null,
   },
-
 ];
+
 
 const tableContent = [
-  { id: 1, name: 'Alex', surname: 'Cejudo', nickname: 'Grana', age: 21 },
-  { id: 2, name: 'Alberto', surname: 'Villar', nickname: 'Vilva', age: 1 },
-  { id: 3, name: 'Carlos', surname: 'Perez', nickname: 'Jimeno0', age: 26 },
-  { id: 4, name: 'Alfonso', surname: 'Huescar', nickname: 'Sito', age: 210 },
+  { id: 1, name: 'Alex', surname: 'Cejudo', nickname: 'Grana', age: 21, Actions: <Actions id={1} /> },
+  { id: 2, name: 'Alberto', surname: 'Villar', nickname: 'Vilva', age: 1, Actions: <Actions id={2} /> },
+  { id: 3, name: 'Carlos', surname: 'Perez', nickname: 'Jimeno0', age: 26, Actions: <Actions id={3} /> },
+  { id: 4, name: 'Alfonso', surname: 'Huescar', nickname: 'Sito', age: 210, Actions: <Actions id={4} /> },
 ];
 
+const Actions = props => (
+  <button onClick={() => console.log({ id: props.id })} >Print {props.id}</button>
+);
 
 storiesOf('Table', module)
-  .add('Empty', () => (
-    <Table headers={headers} tableContent={tableContent} />
+  .add('with headers and tableContent arrays', () => (
+    <div>
+      <Table headers={headers} tableContent={tableContent} />
+    </div>
   ));

@@ -5,11 +5,14 @@ import PropTypes from 'prop-types';
 const Row = (props) => {
   const { content, fields } = props;
   const cells = fields.map(field => ({ value: content[field] }));
+  console.log({ content, fields, cells });
   const renderCells = cells.map(element => <td key={element.value} >{element.value}</td>);
   return (
     <tr>
       {renderCells}
-      {props.children}
+      <td>
+        {props.children}
+      </td>
     </tr>
   );
 };
