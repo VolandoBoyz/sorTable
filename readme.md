@@ -1,4 +1,4 @@
-# sorTable 
+# sort-table-react 
 
 > 🏓React components to create responsive sortable tables
 
@@ -8,14 +8,14 @@ See the [component storybook](https://volandoboyz.github.io/sorTable/storybook-s
 ## Steps to use it
 
 1.Install the component
-  `yarn add sorTable` 
+  `yarn add sort-table-react ` 
   or 
-  `npm install --save sorTable`
+  `npm install --save sort-table-react`
 
 2.Use it 
   ```javascript
 
-  import Table from 'sorTable 
+  import Table from 'sort-table-react'; 
 
 const headers = [
   {

@@ -1,6 +1,6 @@
 const path = require('path');
 
-const libraryName = 'sorTable';
+const libraryName = 'sort-table-react';
 const fileName = `${libraryName}.js`;
 
 const config = {
