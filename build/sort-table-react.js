@@ -5516,7 +5516,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _templateObject = _taggedTemplateLiteral(['\n  &&.table-sortable{\n    width: 100%;\n  }\n'], ['\n  &&.table-sortable{\n    width: 100%;\n  }\n']);
+var _templateObject = _taggedTemplateLiteral(['\n  &&.table-sortable{\n    font-family: Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, serif;\n    width: 100%;\n    border-spacing: 0;\n    th {\n      text-align: start;\n      border-bottom: 1px solid #22BAD9;\n    }\n    td, th {\n      padding: 4px 4px;\n  }\n  }\n'], ['\n  &&.table-sortable{\n    font-family: Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, serif;\n    width: 100%;\n    border-spacing: 0;\n    th {\n      text-align: start;\n      border-bottom: 1px solid #22BAD9;\n    }\n    td, th {\n      padding: 4px 4px;\n  }\n  }\n']);
 
 var _react = __webpack_require__(9);
 
@@ -5675,7 +5675,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _templateObject = _taggedTemplateLiteral(['\n  &&.sortable-header {\n    cursor: pointer;\n    .active-header {\n      color: #22BAD9;\n      i{\n        border: solid #22BAD9;\n        border-width: 0 2px 2px 0;\n        display: inline-block;\n        padding: 5px;\n        &.arrow-down{\n          transform: rotate(45deg) translate(8px);\n          -webkit-transform: rotate(45deg) translate(8px, -8px);\n        }\n        &.arrow-up{\n           transform: rotate(-135deg) translate(-8px);\n          -webkit-transform: rotate(-135deg) translate(-12px, 4px);\n        }\n      }\n  }\n  }\n'], ['\n  &&.sortable-header {\n    cursor: pointer;\n    .active-header {\n      color: #22BAD9;\n      i{\n        border: solid #22BAD9;\n        border-width: 0 2px 2px 0;\n        display: inline-block;\n        padding: 5px;\n        &.arrow-down{\n          transform: rotate(45deg) translate(8px);\n          -webkit-transform: rotate(45deg) translate(8px, -8px);\n        }\n        &.arrow-up{\n           transform: rotate(-135deg) translate(-8px);\n          -webkit-transform: rotate(-135deg) translate(-12px, 4px);\n        }\n      }\n  }\n  }\n']);
+var _templateObject = _taggedTemplateLiteral(['\n  &&.sortable-header {\n    cursor: pointer;\n    .active-header {\n      color: #22BAD9;\n      i{\n        border: solid #22BAD9;\n        border-width: 0 2px 2px 0;\n        display: inline-block;\n        padding: 5px;\n        &.arrow-down{\n          transform: rotate(45deg) translate(8px);\n          -webkit-transform: rotate(45deg) translate(8px, -8px);\n        }\n        &.arrow-up{\n           transform: rotate(-135deg) translate(-8px);\n          -webkit-transform: rotate(-135deg) translate(-12px, 4px);\n        }\n      }\n    }\n    .hidden-header{\n      i{\n        border: transparent;\n        border-width: 0 2px 2px 0;\n        display: inline-block;\n        padding: 5px;\n        margin-left: 2px;\n      }\n    }\n  }\n'], ['\n  &&.sortable-header {\n    cursor: pointer;\n    .active-header {\n      color: #22BAD9;\n      i{\n        border: solid #22BAD9;\n        border-width: 0 2px 2px 0;\n        display: inline-block;\n        padding: 5px;\n        &.arrow-down{\n          transform: rotate(45deg) translate(8px);\n          -webkit-transform: rotate(45deg) translate(8px, -8px);\n        }\n        &.arrow-up{\n           transform: rotate(-135deg) translate(-8px);\n          -webkit-transform: rotate(-135deg) translate(-12px, 4px);\n        }\n      }\n    }\n    .hidden-header{\n      i{\n        border: transparent;\n        border-width: 0 2px 2px 0;\n        display: inline-block;\n        padding: 5px;\n        margin-left: 2px;\n      }\n    }\n  }\n']);
 
 var _react = __webpack_require__(9);
 
@@ -5698,7 +5698,7 @@ var Header = function Header(props) {
     return _react2.default.createElement(
       'th',
       {
-        className: props.target === header.target ? 'active-header' : '',
+        className: props.target === header.target ? 'active-header' : 'hidden-header',
 
         onClick: function onClick() {
           return header.target && props.handleSort(header.target);

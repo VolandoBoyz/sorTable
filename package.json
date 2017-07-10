@@ -1,6 +1,6 @@
 {
   "name": "sort-table-react",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "🏓React components to create responsive sortable tables",
   "main": "build/sort-table-react.js",
   "scripts": {

@@ -36,6 +36,9 @@ const headers = [
   },
 ];
 
+const Actions = props => (
+  <button onClick={() => console.log({ id: props.id })} >Print {props.id}</button>
+);
 
 const tableContent = [
   { id: 1, name: 'Alex', surname: 'Cejudo', nickname: 'Grana', age: 21, Actions: <Actions id={1} /> },
@@ -44,9 +47,6 @@ const tableContent = [
   { id: 4, name: 'Alfonso', surname: 'Huescar', nickname: 'Sito', age: 210, Actions: <Actions id={4} /> },
 ];
 
-const Actions = props => (
-  <button onClick={() => console.log({ id: props.id })} >Print {props.id}</button>
-);
 
 <Table headers={headers} tableContent={tableContent} />
 ```

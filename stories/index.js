@@ -41,4 +41,4 @@ storiesOf('Table', module)
     <div>
       <Table headers={headers} tableContent={tableContent} />
     </div>
-  ));
+ ));

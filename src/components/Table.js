@@ -82,7 +82,16 @@ Table.propTypes = {
 
 const TableStyled = styled(Table)`
   &&.table-sortable{
+    font-family: Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, serif;
     width: 100%;
+    border-spacing: 0;
+    th {
+      text-align: start;
+      border-bottom: 1px solid #22BAD9;
+    }
+    td, th {
+      padding: 4px 4px;
+  }
   }
 `;
 

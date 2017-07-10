@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 const Header = (props) => {
   const headers = props.headers.map(header => (
     <th
-      className={props.target === header.target ? 'active-header' : ''}
+      className={props.target === header.target ? 'active-header' : 'hidden-header'}
 
       onClick={() => header.target && props.handleSort(header.target)}
       key={header.message}
@@ -53,7 +53,16 @@ const HeaderStyled = styled(Header)`
           -webkit-transform: rotate(-135deg) translate(-12px, 4px);
         }
       }
-  }
+    }
+    .hidden-header{
+      i{
+        border: transparent;
+        border-width: 0 2px 2px 0;
+        display: inline-block;
+        padding: 5px;
+        margin-left: 2px;
+      }
+    }
   }
 `;
 export default HeaderStyled;
