@@ -9,6 +9,7 @@ const Row = (props) => {
   return (
     <tr>
       {renderCells}
+      {props.children}
     </tr>
   );
 };
