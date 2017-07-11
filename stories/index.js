@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@kadira/storybook';// eslint-disable-line
-import Table from '../build/sort-table-react';
-// import Table from '../src/components/Table';
+// import Table from '../build/sort-table-react';
+import Table from '../src/components/Table';
 
 
 const headers = [

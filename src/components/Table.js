@@ -85,11 +85,11 @@ const TableStyled = styled(Table)`
     font-family: Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, serif;
     width: 100%;
     border-spacing: 0;
-    th {
+    th{
       text-align: start;
-      border-bottom: 1px solid #22BAD9;
     }
     td, th {
+      border-bottom: 1px solid #22BAD9;
       padding: 4px 4px;
   }
   }
