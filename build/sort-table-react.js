@@ -5516,7 +5516,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _templateObject = _taggedTemplateLiteral(['\n  &&.table-sortable{\n    font-family: Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, serif;\n    width: 100%;\n    border-spacing: 0;\n    th{\n      text-align: start;\n    }\n    td, th {\n      border-bottom: 1px solid #22BAD9;\n      padding: 4px 4px;\n  }\n  }\n'], ['\n  &&.table-sortable{\n    font-family: Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, serif;\n    width: 100%;\n    border-spacing: 0;\n    th{\n      text-align: start;\n    }\n    td, th {\n      border-bottom: 1px solid #22BAD9;\n      padding: 4px 4px;\n  }\n  }\n']);
+var _templateObject = _taggedTemplateLiteral(['\n  &&.table-sortable{\n    font-family: Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, serif;\n    width: 100%;\n    border-spacing: 0;\n    th{\n      text-align: start;\n    }\n    td, th {\n      border-bottom: 1px solid #22BAD9;\n      padding: 4px 4px;\n    }\n    .action-buttons{\n        text-align: end;\n    }\n  }\n'], ['\n  &&.table-sortable{\n    font-family: Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, serif;\n    width: 100%;\n    border-spacing: 0;\n    th{\n      text-align: start;\n    }\n    td, th {\n      border-bottom: 1px solid #22BAD9;\n      padding: 4px 4px;\n    }\n    .action-buttons{\n        text-align: end;\n    }\n  }\n']);
 
 var _react = __webpack_require__(9);
 
@@ -5778,7 +5778,7 @@ var Row = function Row(props) {
     renderCells,
     _react2.default.createElement(
       'td',
-      null,
+      { className: 'action-buttons' },
       props.children
     )
   );

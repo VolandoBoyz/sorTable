@@ -91,7 +91,10 @@ const TableStyled = styled(Table)`
     td, th {
       border-bottom: 1px solid #22BAD9;
       padding: 4px 4px;
-  }
+    }
+    .action-buttons{
+        text-align: end;
+    }
   }
 `;
 

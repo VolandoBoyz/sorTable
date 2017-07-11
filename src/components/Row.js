@@ -9,7 +9,7 @@ const Row = (props) => {
   return (
     <tr>
       {renderCells}
-      <td>
+      <td className='action-buttons'>
         {props.children}
       </td>
     </tr>
