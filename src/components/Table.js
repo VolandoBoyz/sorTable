@@ -16,6 +16,9 @@ class Table extends Component {
   componentDidMount() {
     this.handleSort(this.props.headers[0].target);
   }
+  componentWillReceiveProps(nextProps) {
+    this.setState({ content: nextProps.tableContent });
+  }
   getArraySorted(target) {
     if (typeof (this.state.content[0][target]) === 'string') {
       if (this.state.reversed) {

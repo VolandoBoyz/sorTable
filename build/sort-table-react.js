@@ -5572,6 +5572,11 @@ var Table = function (_Component) {
       this.handleSort(this.props.headers[0].target);
     }
   }, {
+    key: 'componentWillReceiveProps',
+    value: function componentWillReceiveProps(nextProps) {
+      this.setState({ content: nextProps.tableContent });
+    }
+  }, {
     key: 'getArraySorted',
     value: function getArraySorted(target) {
       if (typeof this.state.content[0][target] === 'string') {
