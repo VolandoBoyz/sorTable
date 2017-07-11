@@ -5575,6 +5575,7 @@ var Table = function (_Component) {
     key: 'componentWillReceiveProps',
     value: function componentWillReceiveProps(nextProps) {
       this.setState({ content: nextProps.tableContent });
+      this.handleSort(this.state.target);
     }
   }, {
     key: 'getArraySorted',
@@ -5749,6 +5750,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _templateObject = _taggedTemplateLiteral(['\n    ul{\n    list-style-type: none;\n    padding-left: 0;\n    font-size: 11px;\n  }\n'], ['\n    ul{\n    list-style-type: none;\n    padding-left: 0;\n    font-size: 11px;\n  }\n']);
+
 var _react = __webpack_require__(9);
 
 var _react2 = _interopRequireDefault(_react);
@@ -5763,6 +5766,8 @@ var _propTypes2 = _interopRequireDefault(_propTypes);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
 var Row = function Row(props) {
   var content = props.content,
       fields = props.fields;
@@ -5771,6 +5776,23 @@ var Row = function Row(props) {
     return { value: content[field] };
   });
   var renderCells = cells.map(function (element) {
+    if (Array.isArray(element.value)) {
+      return _react2.default.createElement(
+        'td',
+        null,
+        _react2.default.createElement(
+          'ul',
+          { className: 'list-in-table' },
+          element.value.map(function (item) {
+            return _react2.default.createElement(
+              'li',
+              null,
+              item
+            );
+          })
+        )
+      );
+    }
     return _react2.default.createElement(
       'td',
       { key: element.value },
@@ -5779,7 +5801,7 @@ var Row = function Row(props) {
   });
   return _react2.default.createElement(
     'tr',
-    null,
+    { className: props.className },
     renderCells,
     _react2.default.createElement(
       'td',
@@ -5789,12 +5811,16 @@ var Row = function Row(props) {
   );
 };
 
+var RowStyled = (0, _styledComponents2.default)(Row)(_templateObject);
+
 Row.propTypes = {
+  children: _propTypes2.default.node,
+  className: _propTypes2.default.string.isRequired,
   fields: _propTypes2.default.array.isRequired,
   content: _propTypes2.default.object.isRequired
 };
 
-exports.default = Row;
+exports.default = RowStyled;
 
 /***/ }),
 /* 25 */

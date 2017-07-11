@@ -18,6 +18,9 @@ const headers = [
     message: 'age',
     target: 'age',
   }, {
+    message: 'tags',
+    target: 'tags',
+  }, {
     message: '',
     target: null,
   },
@@ -29,10 +32,10 @@ const Actions = props => (
 );
 
 const tableContent = [
-  { id: 1, name: 'Alex', surname: 'Cejudo', nickname: 'Grana', age: 21, Actions: <Actions id={1} /> },
-  { id: 2, name: 'Alberto', surname: 'Villar', nickname: 'Vilva', age: 1, Actions: <Actions id={2} /> },
-  { id: 3, name: 'Carlos', surname: 'Perez', nickname: 'Jimeno0', age: 26, Actions: <Actions id={3} /> },
-  { id: 4, name: 'Alfonso', surname: 'Huescar', nickname: 'Sito', age: 210, Actions: <Actions id={4} /> },
+  { id: 1, name: 'Alex', surname: 'Cejudo', nickname: 'Grana', age: 21, tags: ['bla', 'bla'], Actions: <Actions id={1} /> },
+  { id: 2, name: 'Alberto', surname: 'Villar', nickname: 'Vilva', age: 1, tags: ['bla', 'bla'], Actions: <Actions id={2} /> },
+  { id: 3, name: 'Carlos', surname: 'Perez', nickname: 'Jimeno0', age: 26, tags: ['bla', 'bla'], Actions: <Actions id={3} /> },
+  { id: 4, name: 'Alfonso', surname: 'Huescar', nickname: 'Sito', age: 210, tags: ['bla', 'bla'], Actions: <Actions id={4} /> },
 ];
 
 
