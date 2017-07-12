@@ -5,18 +5,18 @@ import PropTypes from 'prop-types';
 const Row = (props) => {
   const { content, fields } = props;
   const cells = fields.map(field => ({ value: content[field] }));
-  const renderCells = cells.map((element) => {
+  const renderCells = cells.map((element, i) => {
     if (Array.isArray(element.value)) {
       return (
-        <td>
+        <td key={`${element.value}${i}`}>
           <ul className='list-in-table'>
-            {element.value.map(item => <li>{item}</li>)}
+            {element.value.map(item => <li key={item}>{item}</li>)}
           </ul>
         </td>
 
       );
     }
-    return <td key={element.value} >{element.value}</td>;
+    return <td key={`${element.value}${i}`} >{element.value}</td>;
   });
   return (
     <tr className={props.className}>

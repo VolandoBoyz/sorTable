@@ -5775,18 +5775,18 @@ var Row = function Row(props) {
   var cells = fields.map(function (field) {
     return { value: content[field] };
   });
-  var renderCells = cells.map(function (element) {
+  var renderCells = cells.map(function (element, i) {
     if (Array.isArray(element.value)) {
       return _react2.default.createElement(
         'td',
-        null,
+        { key: '' + element.value + i },
         _react2.default.createElement(
           'ul',
           { className: 'list-in-table' },
           element.value.map(function (item) {
             return _react2.default.createElement(
               'li',
-              null,
+              { key: item },
               item
             );
           })
@@ -5795,7 +5795,7 @@ var Row = function Row(props) {
     }
     return _react2.default.createElement(
       'td',
-      { key: element.value },
+      { key: '' + element.value + i },
       element.value
     );
   });
