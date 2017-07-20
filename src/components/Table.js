@@ -10,11 +10,11 @@ class Table extends Component {
     this.state = {
       content: this.props.tableContent,
       reversed: true,
-      target: '',
+      target: this.props.initialSort,
     };
   }
   componentDidMount() {
-    this.handleSort(this.props.headers[0].target);
+    this.handleSort(this.state.target);
   }
   componentWillReceiveProps(nextProps) {
     this.setState({ content: nextProps.tableContent });
@@ -79,6 +79,7 @@ class Table extends Component {
 
 
 Table.propTypes = {
+  initialSort: PropTypes.string.isRequired,
   headers: PropTypes.array.isRequired,
   className: PropTypes.string.isRequired,
   tableContent: PropTypes.array.isRequired,
@@ -91,8 +92,10 @@ const TableStyled = styled(Table)`
     border-spacing: 0;
     th{
       text-align: start;
+      text-transform: uppercase;
     }
     td, th {
+      font-size: 13px;
       border-bottom: 1px solid #22BAD9;
       padding: 4px 4px;
     }

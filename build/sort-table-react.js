@@ -5516,7 +5516,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _templateObject = _taggedTemplateLiteral(['\n  &&.table-sortable{\n    font-family: Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, serif;\n    width: 100%;\n    border-spacing: 0;\n    th{\n      text-align: start;\n    }\n    td, th {\n      border-bottom: 1px solid #22BAD9;\n      padding: 4px 4px;\n    }\n    .action-buttons{\n        text-align: end;\n    }\n  }\n'], ['\n  &&.table-sortable{\n    font-family: Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, serif;\n    width: 100%;\n    border-spacing: 0;\n    th{\n      text-align: start;\n    }\n    td, th {\n      border-bottom: 1px solid #22BAD9;\n      padding: 4px 4px;\n    }\n    .action-buttons{\n        text-align: end;\n    }\n  }\n']);
+var _templateObject = _taggedTemplateLiteral(['\n  &&.table-sortable{\n    font-family: Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, serif;\n    width: 100%;\n    border-spacing: 0;\n    th{\n      text-align: start;\n      text-transform: uppercase;\n    }\n    td, th {\n      font-size: 13px;\n      border-bottom: 1px solid #22BAD9;\n      padding: 4px 4px;\n    }\n    .action-buttons{\n        text-align: end;\n    }\n  }\n'], ['\n  &&.table-sortable{\n    font-family: Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, serif;\n    width: 100%;\n    border-spacing: 0;\n    th{\n      text-align: start;\n      text-transform: uppercase;\n    }\n    td, th {\n      font-size: 13px;\n      border-bottom: 1px solid #22BAD9;\n      padding: 4px 4px;\n    }\n    .action-buttons{\n        text-align: end;\n    }\n  }\n']);
 
 var _react = __webpack_require__(9);
 
@@ -5561,7 +5561,7 @@ var Table = function (_Component) {
     _this.state = {
       content: _this.props.tableContent,
       reversed: true,
-      target: ''
+      target: _this.props.initialSort
     };
     return _this;
   }
@@ -5569,7 +5569,7 @@ var Table = function (_Component) {
   _createClass(Table, [{
     key: 'componentDidMount',
     value: function componentDidMount() {
-      this.handleSort(this.props.headers[0].target);
+      this.handleSort(this.state.target);
     }
   }, {
     key: 'componentWillReceiveProps',
@@ -5661,6 +5661,7 @@ var Table = function (_Component) {
 }(_react.Component);
 
 Table.propTypes = {
+  initialSort: _propTypes2.default.string.isRequired,
   headers: _propTypes2.default.array.isRequired,
   className: _propTypes2.default.string.isRequired,
   tableContent: _propTypes2.default.array.isRequired
@@ -5700,7 +5701,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 var Header = function Header(props) {
-  var headers = props.headers.map(function (header) {
+  var headers = props.headers.map(function (header, i) {
     return _react2.default.createElement(
       'th',
       {
@@ -5709,7 +5710,7 @@ var Header = function Header(props) {
         onClick: function onClick() {
           return header.target && props.handleSort(header.target);
         },
-        key: header.message
+        key: '' + header.message + i
       },
       header.message,
       _react2.default.createElement('i', {

@@ -3,12 +3,12 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 const Header = (props) => {
-  const headers = props.headers.map(header => (
+  const headers = props.headers.map((header, i) => (
     <th
       className={props.target === header.target ? 'active-header' : 'hidden-header'}
 
       onClick={() => header.target && props.handleSort(header.target)}
-      key={header.message}
+      key={`${header.message}${i}`}
     >
       {header.message}
       <i

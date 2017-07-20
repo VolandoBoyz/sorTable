@@ -42,6 +42,6 @@ const tableContent = [
 storiesOf('Table', module)
   .add('with headers and tableContent arrays', () => (
     <div>
-      <Table headers={headers} tableContent={tableContent} />
+      <Table initialSort={'surname'} headers={headers} tableContent={tableContent} />
     </div>
  ));
