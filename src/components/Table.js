@@ -9,7 +9,7 @@ class Table extends Component {
     super(props);
     this.state = {
       content: this.props.tableContent,
-      reversed: true,
+      reversed: false,
       target: this.props.initialSort,
     };
   }
@@ -92,7 +92,6 @@ const TableStyled = styled(Table)`
     border-spacing: 0;
     th{
       text-align: start;
-      text-transform: uppercase;
     }
     td, th {
       font-size: 13px;
