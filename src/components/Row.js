@@ -15,11 +15,40 @@ const Row = (props) => {
         </td>
 
       );
+    } else if (typeof element.value === 'object') {
+      if (element.value.type === 'networks') {
+        return (
+          <td
+            key={`${element.value.value}${i}`}
+            className={element.value.className}
+          >
+            {element.value.value.map((network, j) => (
+              <div
+                className='icon-div-container'
+                key={`${j}`}
+              >
+                {network}
+              </div>
+        ))}
+          </td>
+        );
+      }
+      return (
+        <td
+          key={`${element.value.value}${i}`}
+          className={element.value.className}
+        >
+          {element.value.label}
+        </td>
+      );
     }
     return <td key={`${element.value}${i}`} >{element.value}</td>;
   });
   return (
-    <tr className={props.className}>
+    <tr
+      onClick={props.onClick}
+      className={props.className}
+    >
       {renderCells}
       <td className='action-buttons'>
         {props.children}
@@ -29,10 +58,15 @@ const Row = (props) => {
 };
 
 const RowStyled = styled(Row)`
+  cursor: pointer;
     ul{
     list-style-type: none;
     padding-left: 0;
     font-size: 11px;
+  }
+  .icon-div-container{
+    display: inline-block;
+    margin: 0 8px;
   }
 `;
 

@@ -1,19 +1,20 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import { ArrowUp, ArrowDown } from './Icons';
 
 const Header = (props) => {
   const headers = props.headers.map((header, i) => (
     <th
-      className={props.target === header.target ? 'active-header' : 'hidden-header'}
+      className={`${header.className} ${props.target === header.target ? 'active-header' : 'hidden-header'}`}
 
       onClick={() => header.target && props.handleSort(header.target)}
       key={`${header.message}${i}`}
     >
       {header.message}
-      <i
-        className={props.reversed ? 'arrow-down' : 'arrow-up'}
-      />
+      <div className='arrow-container'>
+        {props.reversed ? <ArrowDown /> : <ArrowUp />}
+      </div>
     </th>
   ));
   return (
@@ -29,33 +30,34 @@ const Header = (props) => {
 Header.propTypes = {
   className: PropTypes.string.isRequired,
   headers: PropTypes.arrayOf(PropTypes.shape({
-    message: PropTypes.string.isRequired,
-    target: PropTypes.string.isRequired,
+    message: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.null,
+    ]).isRequired,
+    target: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.null,
+    ]).isRequired,
   })).isRequired,
 };
 
 const HeaderStyled = styled(Header)`
   &&.sortable-header {
     cursor: pointer;
+    .arrow-container{
+      padding: 0 4px;
+      display: inline-block;
+      visibility: hidden;
+    }
     .active-header {
-      color: #22BAD9;
-      i{
-        border: solid #22BAD9;
-        border-width: 0 2px 2px 0;
+      color: #EE0D61;
+      .arrow-container{
         display: inline-block;
-        padding: 5px;
-        &.arrow-down{
-          transform: rotate(45deg) translate(8px);
-          -webkit-transform: rotate(45deg) translate(8px, -8px);
-        }
-        &.arrow-up{
-           transform: rotate(-135deg) translate(-8px);
-          -webkit-transform: rotate(-135deg) translate(-12px, 4px);
-        }
+        visibility: visible;
       }
     }
     .hidden-header{
-      i{
+      .header-icon{
         border: transparent;
         border-width: 0 2px 2px 0;
         display: inline-block;
